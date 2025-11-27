@@ -1,15 +1,17 @@
 {
   "name": "aqs-quickscript",
   "displayName": "AQS ArchestrA QuickScript",
-  "description": "Soporte para scripts QuickScript .NET de AVEVA Application Server (.aqs)",
-  "version": "0.0.1",
   "publisher": "jlanzas",
+  "version": "0.0.2",
+  "description": "Syntax highlighting y snippets para QuickScript .NET (AVEVA System Platform)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlanzaslopez/aqs-quickscript"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": [
-    "Programming Languages"
-  ],
+  "categories": ["Programming Languages"],
   "contributes": {
     "languages": [
       {
