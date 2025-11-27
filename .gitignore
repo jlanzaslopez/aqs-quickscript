@@ -1,0 +1,4 @@
+# Archivo de test opcional
+*.aqs
+# No subir paquetes VSIX generados
+*.vsix
