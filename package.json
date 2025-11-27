@@ -2,7 +2,7 @@
   "name": "aqs-quickscript",
   "displayName": "AQS ArchestrA QuickScript",
   "publisher": "jlanzas",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Syntax highlighting y snippets para QuickScript .NET (AVEVA System Platform)",
   "repository": {
     "type": "git",
@@ -11,13 +11,20 @@
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": ["Programming Languages"],
+  "categories": [
+    "Programming Languages"
+  ],
   "contributes": {
     "languages": [
       {
         "id": "aqs",
-        "aliases": ["ArchestrA QuickScript", "AQS"],
-        "extensions": [".aqs"],
+        "aliases": [
+          "ArchestrA QuickScript",
+          "AQS"
+        ],
+        "extensions": [
+          ".aqs"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
