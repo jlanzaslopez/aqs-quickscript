@@ -1,18 +1,46 @@
 {
   "name": "ArchestrA QuickScript",
   "scopeName": "source.aqs",
-  "fileTypes": ["aqs"],
+  "fileTypes": [
+    "aqs"
+  ],
   "patterns": [
-    { "include": "#comments" },
-    { "include": "#strings" },
-    { "include": "#numbers" },
-    { "include": "#keywords" },
-    { "include": "#booleans" },
-    { "include": "#operators" },
-    { "include": "#types" },
-    { "include": "#functions" },
-    { "include": "#variables" },
-    { "include": "#memberAccess" }
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#booleans"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#memberAccess"
+    }
   ],
   "repository": {
     "comments": {
@@ -61,7 +89,7 @@
       "patterns": [
         {
           "name": "keyword.control.aqs",
-          "match": "\\b(If|Then|Else|ElseIf|EndIf|While|EndWhile|For|To|Step|Next|Try|Catch|EndTry|Return)\\b",
+          "match": "(?i)\\b(If|Then|Else|ElseIf|EndIf|While|Wend|EndWhile|For|To|Step|Next|Try|Catch|Finally|EndTry|Return|Exit|New)\\b",
           "captures": {}
         }
       ]
@@ -70,7 +98,7 @@
       "patterns": [
         {
           "name": "constant.language.boolean.aqs",
-          "match": "\\b(True|False)\\b"
+          "match": "(?i)\\b(True|False|Null|Nothing)\\b"
         }
       ]
     },
@@ -78,7 +106,19 @@
       "patterns": [
         {
           "name": "keyword.operator.aqs",
-          "match": "(==|<>|<=|>=|<|>|\\+|\\-|\\*\\*|\\*|/|MOD\\b|AND\\b|OR\\b|NOT\\b|&|\\||\\^|SHL\\b|SHR\\b|=)"
+          "match": "(?i)(==|<>|<=|>=|<|>|\\+|\\-|\\*\\*|\\*|/|MOD\\b|AND\\b|OR\\b|NOT\\b|&|\\||\\^|SHL\\b|SHR\\b|=)"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.terminator.statement.aqs",
+          "match": ";"
+        },
+        {
+          "name": "invalid.illegal.missing-semicolon.aqs",
+          "match": "(?i)^(?!\\s*(?:'|$))(?!\\s*(?:If\\b|Else\\b|ElseIf\\b|EndIf\\b|While\\b|Wend\\b|EndWhile\\b|For\\b|Next\\b|Try\\b|Catch\\b|Finally\\b|EndTry\\b))(?!.*;\\s*$)(?=.*\\S)\\s*$"
         }
       ]
     },
@@ -86,11 +126,29 @@
       "patterns": [
         {
           "name": "storage.type.aqs",
-          "match": "\\b(Integer|Float|Double|String|Boolean|DateTime|aaContent\\.ContentInfo|aaGraphic\\.GraphicInfo|CustomPropertyValuePair|PropertyOverrideValue)\\b"
-        },
+          "match": "(?i)\\b(Integer|Float|Double|String|Boolean|DateTime|Object|System\\.[A-Za-z0-9_.]+|aaContent\\.ContentInfo|aaGraphic\\.GraphicInfo|CustomPropertyValuePair|PropertyOverrideValue)\\b"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
         {
-          "name": "storage.modifier.aqs",
-          "match": "\\bDim\\b"
+          "name": "meta.declaration.variable.aqs",
+          "match": "(?i)\\b(Dim)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s+(As)\\s+([A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.aqs"
+            },
+            "2": {
+              "name": "variable.other.declaration.aqs"
+            },
+            "3": {
+              "name": "storage.modifier.aqs"
+            },
+            "4": {
+              "name": "storage.type.aqs"
+            }
+          }
         }
       ]
     },
@@ -98,7 +156,7 @@
       "patterns": [
         {
           "name": "support.function.aqs",
-          "match": "\\b(Abs|ArcCos|ArcSin|ArcTan|Cos|Exp|Int|Log|Log10|LogN|Pi|Round|Sgn|Sin|Sqrt|Tan|Trunc|StringLen|StringReplace|StringInString|StringMid|StringLeft|StringRight|StringTrim|Now|LogMessage|LogError|LogWarning|LogTrace|LogCustom|ShowGraphic|HideGraphic|ShowContent|HideContent|SetGood|SetBad|SetUncertain|SetInitializing|IsGood|IsBad|IsUncertain|IsInitializing|IsUsable)\\s*(?=\\()"
+          "match": "(?i)\\b(Abs|ArcCos|ArcSin|ArcTan|Cos|Exp|Int|Log|Log10|LogN|Pi|Round|Sgn|Sin|Sqrt|Tan|Trunc|StringLen|StringReplace|StringInString|StringMid|StringLeft|StringRight|StringTrim|Now|LogMessage|LogError|LogWarning|LogTrace|LogCustom|ShowGraphic|HideGraphic|ShowContent|HideContent|SetGood|SetBad|SetUncertain|SetInitializing|IsGood|IsBad|IsUncertain|IsInitializing|IsUsable)\\s*(?=\\()"
         }
       ]
     },
@@ -114,11 +172,11 @@
       "patterns": [
         {
           "name": "variable.other.member.aqs",
-          "match": "\\b(Me|me)\\.[A-Za-z_][A-Za-z0-9_]*"
+          "match": "(?i)\\bMe\\.[A-Za-z_][A-Za-z0-9_]*"
         },
         {
           "name": "variable.other.member.aqs",
-          "match": "[A-Za-z_][A-Za-z0-9_]*\\.[A-Za-z_][A-Za-z0-9_]*"
+          "match": "(?i)[A-Za-z_][A-Za-z0-9_]*\\.[A-Za-z_][A-Za-z0-9_]*"
         }
       ]
     }
