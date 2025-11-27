@@ -1,0 +1,36 @@
+{
+  "name": "aqs-quickscript",
+  "displayName": "AQS ArchestrA QuickScript",
+  "description": "Soporte para scripts QuickScript .NET de AVEVA Application Server (.aqs)",
+  "version": "0.0.1",
+  "publisher": "jlanzas",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "aqs",
+        "aliases": ["ArchestrA QuickScript", "AQS"],
+        "extensions": [".aqs"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "aqs",
+        "scopeName": "source.aqs",
+        "path": "./syntaxes/aqs.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "aqs",
+        "path": "./snippets/aqs-snippets.json"
+      }
+    ]
+  }
+}

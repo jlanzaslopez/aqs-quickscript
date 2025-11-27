@@ -1,0 +1,128 @@
+{
+  "name": "ArchestrA QuickScript",
+  "scopeName": "source.aqs",
+  "fileTypes": ["aqs"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#booleans" },
+    { "include": "#operators" },
+    { "include": "#types" },
+    { "include": "#functions" },
+    { "include": "#variables" },
+    { "include": "#memberAccess" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.apostrophe.aqs",
+          "match": "'.*$"
+        },
+        {
+          "name": "comment.block.braces.aqs",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "match": ".",
+              "name": "comment.block.braces.aqs"
+            }
+          ]
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.aqs",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.aqs",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.aqs",
+          "match": "\\b\\d+(?:\\.\\d+)?\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.aqs",
+          "match": "\\b(If|Then|Else|ElseIf|EndIf|While|EndWhile|For|To|Step|Next|Try|Catch|EndTry|Return)\\b",
+          "captures": {}
+        }
+      ]
+    },
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.aqs",
+          "match": "\\b(True|False)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.aqs",
+          "match": "(==|<>|<=|>=|<|>|\\+|\\-|\\*\\*|\\*|/|MOD\\b|AND\\b|OR\\b|NOT\\b|&|\\||\\^|SHL\\b|SHR\\b|=)"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.aqs",
+          "match": "\\b(Integer|Float|Double|String|Boolean|DateTime|aaContent\\.ContentInfo|aaGraphic\\.GraphicInfo|CustomPropertyValuePair|PropertyOverrideValue)\\b"
+        },
+        {
+          "name": "storage.modifier.aqs",
+          "match": "\\bDim\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "support.function.aqs",
+          "match": "\\b(Abs|ArcCos|ArcSin|ArcTan|Cos|Exp|Int|Log|Log10|LogN|Pi|Round|Sgn|Sin|Sqrt|Tan|Trunc|StringLen|StringReplace|StringInString|StringMid|StringLeft|StringRight|StringTrim|Now|LogMessage|LogError|LogWarning|LogTrace|LogCustom|ShowGraphic|HideGraphic|ShowContent|HideContent|SetGood|SetBad|SetUncertain|SetInitializing|IsGood|IsBad|IsUncertain|IsInitializing|IsUsable)\\s*(?=\\()"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.aqs",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+        }
+      ]
+    },
+    "memberAccess": {
+      "patterns": [
+        {
+          "name": "variable.other.member.aqs",
+          "match": "\\b(Me|me)\\.[A-Za-z_][A-Za-z0-9_]*"
+        },
+        {
+          "name": "variable.other.member.aqs",
+          "match": "[A-Za-z_][A-Za-z0-9_]*\\.[A-Za-z_][A-Za-z0-9_]*"
+        }
+      ]
+    }
+  },
+  "injections": {},
+  "uuid": "a4c3b2b0-0000-0000-aqs-quickscript"
+}
